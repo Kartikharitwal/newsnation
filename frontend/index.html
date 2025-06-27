@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The News Mania</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="Stay updated with personalized news from top sources in multiple languages">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📰</text></svg>">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">📰 NewsNation</div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#" class="nav-link active" data-category="all">All</a></li>
+                    <li><a href="#" class="nav-link" data-category="technology">Technology</a></li>
+                    <li><a href="#" class="nav-link" data-category="business">Business</a></li>
+                    <li><a href="#" class="nav-link" data-category="sports">Sports</a></li>
+                    <li><a href="#" class="nav-link" data-category="science">Science</a></li>
+                    <li><a href="#" class="nav-link" data-category="entertainment">Entertainment</a></li>
+                </ul>
+            </nav>
+            <div class="header-controls">
+                <select class="language-selector" id="languageSelector">
+                    <option value="en">🇺🇸 English</option>
+                    <option value="hi">🇮🇳 हिंदी</option>
+                    <option value="gu">🇮🇳 ગુજરાતી</option>    
+                    <option value="es">🇪🇸 Español</option>
+                    <option value="de">🇩🇪 Deutsch</option>
+                </select>
+                <button class="theme-toggle" id="themeToggle">🌙 Dark</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="hero-section">
+            <h1 class="hero-title">Latest News</h1>
+            <p class="hero-subtitle">Stay updated with personalized news from top sources worldwide</p>
+            
+            <div class="search-container">
+                <input type="text" class="search-input" id="searchInput" placeholder="🔍 Search news articles...">
+            </div>
+
+            <!-- State News Feature -->
+            <div class="state-news-container" style="margin: 1.5rem 0; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <select id="stateSelector" class="language-selector" style="min-width: 180px;">
+                    <option value="">Select State</option>
+                    <option value="Andhra Pradesh">Andhra Pradesh</option>
+                    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                    <option value="Assam">Assam</option>
+                    <option value="Bihar">Bihar</option>
+                    <option value="Chhattisgarh">Chhattisgarh</option>
+                    <option value="Goa">Goa</option>
+                    <option value="Gujarat">Gujarat</option>
+                    <option value="Haryana">Haryana</option>
+                    <option value="Himachal Pradesh">Himachal Pradesh</option>
+                    <option value="Jharkhand">Jharkhand</option>
+                    <option value="Karnataka">Karnataka</option>
+                    <option value="Kerala">Kerala</option>
+                    <option value="Madhya Pradesh">Madhya Pradesh</option>
+                    <option value="Maharashtra">Maharashtra</option>
+                    <option value="Manipur">Manipur</option>
+                    <option value="Meghalaya">Meghalaya</option>
+                    <option value="Mizoram">Mizoram</option>
+                    <option value="Nagaland">Nagaland</option>
+                    <option value="Odisha">Odisha</option>
+                    <option value="Punjab">Punjab</option>
+                    <option value="Rajasthan">Rajasthan</option>
+                    <option value="Sikkim">Sikkim</option>
+                    <option value="Tamil Nadu">Tamil Nadu</option>
+                    <option value="Telangana">Telangana</option>
+                    <option value="Tripura">Tripura</option>
+                    <option value="Uttar Pradesh">Uttar Pradesh</option>
+                    <option value="Uttarakhand">Uttarakhand</option>
+                    <option value="West Bengal">West Bengal</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                    <option value="Ladakh">Ladakh</option>
+                </select>
+                <button id="getStateNewsBtn" class="theme-toggle" style="min-width: 140px;">Get State News</button>
+            </div>
+
+            <div class="category-filters">
+                <button class="filter-btn active" data-filter="all">📰 All</button>
+                <button class="filter-btn" data-filter="technology">💻 Technology</button>
+                <button class="filter-btn" data-filter="business">💼 Business</button>
+                <button class="filter-btn" data-filter="sports">⚽ Sports</button>
+                <button class="filter-btn" data-filter="science">🔬 Science</button>
+                <button class="filter-btn" data-filter="entertainment">🎬 Entertainment</button>
+                <button class="filter-btn" data-filter="politics">🏛️ Politics</button>
+            </div>
+        </section>
+
+        <section id="newsSection">
+            <div class="loading" id="loadingIndicator" style="display: none;">
+                <div class="loading-spinner"></div>
+                <p>Loading latest news...</p>
+            </div>
+            <div class="news-grid" id="newsGrid"></div>
+            <!-- State News Results -->
+            <div class="news-grid" id="stateNewsGrid" style="margin-top: 2rem;"></div>
+        </section>
+
+        <section class="saved-articles" id="savedSection">
+            <h2 class="saved-title">📚 Saved Articles</h2>
+            <div class="saved-list" id="savedList">
+                <p style="color: var(--text-secondary); text-align: center;">No saved articles yet. Save articles to read them later!</p>
+            </div>
+        </section>
+    </main>
+
+    <footer style="background: var(--header-bg); color: var(--nav-text); text-align: center; padding: 2rem; margin-top: 3rem;">
+        <p>&copy; 2024 News Mania. Stay informed, stay ahead.</p>
+        <p style="margin-top: 0.5rem; opacity: 0.8;">Powered by NewsAPI.org</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
